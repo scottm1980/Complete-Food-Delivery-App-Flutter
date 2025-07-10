@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:user_app/assistant_methods/cart_item_counter.dart';
 import 'package:user_app/mainScreens/cart_screen.dart';
 
-class MyAppbar extends StatefulWidget with PreferredSizeWidget {
+class MyAppbar extends StatefulWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
   final String? sellerUID;
 
-  MyAppbar({this.bottom, this.sellerUID});
+  const MyAppbar({super.key, this.bottom, this.sellerUID});
   @override
   State<MyAppbar> createState() => _MyAppbarState();
 

@@ -6,14 +6,13 @@ import 'package:intl/intl.dart';
 import 'package:rider_app/models/address.dart';
 import 'package:rider_app/widgets/progress_bar.dart';
 
-import '../global/global.dart';
 import '../widgets/shipment_address_design.dart';
 import '../widgets/status_banner.dart';
 
 class OrderDetailsScreen extends StatefulWidget {
   final String? orderId;
 
-  const OrderDetailsScreen({this.orderId});
+  const OrderDetailsScreen({super.key, this.orderId});
 
   @override
   State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
@@ -24,7 +23,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   String orderByUser = "";
   String sellerId = "";
 
-  getOrderInfo() {
+  void getOrderInfo() {
     FirebaseFirestore.instance
         .collection('orders')
         .doc(widget.orderId)

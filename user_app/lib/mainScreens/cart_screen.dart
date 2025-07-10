@@ -175,7 +175,6 @@ class _CartScreenState extends State<CartScreen> {
 
                             return CartItemDesign(
                               model: model,
-                              context: context,
                               quanNumber: separateItemQuantityList![index],
                             );
                           },

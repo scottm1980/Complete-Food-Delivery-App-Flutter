@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:seller_app/mainScreens/item_detail_screen.dart';
-import 'package:seller_app/mainScreens/itemsScreen.dart';
 import 'package:seller_app/model/items.dart';
-import 'package:seller_app/model/menus.dart';
 
 class ItemDesignWidget extends StatefulWidget {
-  Items? model;
-  BuildContext? context;
+  final Items? model;
+  final BuildContext? context;
 
   ItemDesignWidget({super.key, this.model, this.context});
 
@@ -27,7 +25,7 @@ class _ItemDesignWidgetState extends State<ItemDesignWidget> {
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(5),
-        child: Container(
+        child: SizedBox(
           height: 300,
           width: MediaQuery.of(context).size.width,
           child: Column(children: [

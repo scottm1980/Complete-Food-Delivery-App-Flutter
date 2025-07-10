@@ -3,8 +3,8 @@ import 'package:user_app/mainScreens/menus_screen.dart';
 import 'package:user_app/models/sellers.dart';
 
 class SellersDesignWidget extends StatefulWidget {
-  Sellers? model;
-  BuildContext? context;
+  final Sellers? model;
+  final BuildContext? context;
 
   SellersDesignWidget({super.key, this.model, this.context});
 
@@ -25,7 +25,7 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(5),
-        child: Container(
+        child: SizedBox(
           height: 300,
           width: MediaQuery.of(context).size.width,
           child: Column(children: [

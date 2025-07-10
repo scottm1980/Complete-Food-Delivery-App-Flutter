@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  formValidation() {
+  void formValidation() {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
 // login
       loginNow();
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  loginNow() async {
+  Future<void> loginNow() async {
     showDialog(
         context: context,
         builder: (c) {
@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
               formValidation();
             },
             style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent.shade100,
+                backgroundColor: Colors.redAccent.shade100,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
             child: const Text(

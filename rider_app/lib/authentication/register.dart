@@ -49,7 +49,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
   }
 
-  getCurrentLocation() async {
+  Future<void> getCurrentLocation() async {
+    // ignore: unused_local_variable
     LocationPermission permission = await Geolocator.requestPermission();
     Position newPosition = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
@@ -264,7 +265,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: TextStyle(color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 249, 168, 87),
+                          backgroundColor: Color.fromARGB(255, 249, 168, 87),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           )),
@@ -281,7 +282,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 formValidation(),
               },
               style: ElevatedButton.styleFrom(
-                  primary: Colors.redAccent.shade100,
+                  backgroundColor: Colors.redAccent.shade100,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 50, vertical: 20)),
               child: const Text(

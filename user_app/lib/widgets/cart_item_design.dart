@@ -4,13 +4,11 @@ import '../models/items.dart';
 
 class CartItemDesign extends StatefulWidget {
   final Items? model;
-  BuildContext? context;
   final int? quanNumber;
 
-  CartItemDesign({
+  const CartItemDesign({
     super.key,
     this.model,
-    this.context,
     this.quanNumber,
   });
 
@@ -25,7 +23,7 @@ class _CartItemDesignState extends State<CartItemDesign> {
       onTap: () {},
       child: Padding(
         padding: EdgeInsets.all(6),
-        child: Container(
+        child: SizedBox(
           height: 165,
           width: MediaQuery.of(context).size.width,
           child: Row(

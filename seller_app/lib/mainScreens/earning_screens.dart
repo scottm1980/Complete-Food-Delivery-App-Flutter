@@ -43,7 +43,7 @@ class _EarningScreenState extends State<EarningScreen> {
           children: [
             // ignore: prefer_interpolation_to_compose_strings
             Text(
-              "₹" + sellerTotalEarnings.toString(),
+              "₹$sellerTotalEarnings",
               style: const TextStyle(
                   fontSize: 50, color: Colors.white, fontFamily: "Signatra"),
             ),

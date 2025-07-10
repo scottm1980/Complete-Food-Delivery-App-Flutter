@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:user_app/mainScreens/items_screen.dart';
 import 'package:user_app/models/menus.dart';
-import 'package:user_app/models/sellers.dart';
 
 class MenusDesignWidget extends StatefulWidget {
-  Menus? model;
-  BuildContext? context;
+  final Menus? model;
+  final BuildContext? context;
 
   MenusDesignWidget({super.key, this.model, this.context});
 
@@ -26,7 +25,7 @@ class _MenusDesignWidgetState extends State<MenusDesignWidget> {
       splashColor: Colors.pinkAccent,
       child: Padding(
         padding: const EdgeInsets.all(5),
-        child: Container(
+        child: SizedBox(
           height: 300,
           width: MediaQuery.of(context).size.width,
           child: Column(children: [

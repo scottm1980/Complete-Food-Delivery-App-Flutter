@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:user_app/assistant_methods/cart_item_counter.dart';
 import 'package:user_app/global/global.dart';
 
-separateOrderItemIds(orderId) {
+List<String> separateOrderItemIds(orderId) {
   List<String> separateItemIdsList = [], defaultItemList = [];
   int i = 0;
 
@@ -22,7 +22,7 @@ separateOrderItemIds(orderId) {
   return separateItemIdsList;
 }
 
-separateItemIds() {
+List<String> separateItemIds() {
   List<String> separateItemIdsList = [], defaultItemList = [];
   int i = 0;
   defaultItemList = sharedPreferences!.getStringList("userCart")!;
@@ -38,7 +38,7 @@ separateItemIds() {
   return separateItemIdsList;
 }
 
-addItemToCart(String? foodItemId, BuildContext context, int itemCounter) {
+void addItemToCart(String? foodItemId, BuildContext context, int itemCounter) {
   List<String>? tempList = sharedPreferences!.getStringList("userCart");
   // foodItemId = 'garbadgevalue';
   tempList!.add("${foodItemId!}:$itemCounter"); //1210259022: 2
@@ -60,7 +60,7 @@ addItemToCart(String? foodItemId, BuildContext context, int itemCounter) {
   });
 }
 
-separateOrderItemQuantities(orderId) {
+List<String> separateOrderItemQuantities(orderId) {
   List<String> separateItemQuantityList = [];
   List<String> defaultItemList = [];
 
@@ -79,7 +79,7 @@ separateOrderItemQuantities(orderId) {
   return separateItemQuantityList;
 }
 
-separateItemQuantities() {
+List<int> separateItemQuantities() {
   List<int> separateItemQuantityList = [];
   List<String> defaultItemList = [];
 
@@ -98,7 +98,7 @@ separateItemQuantities() {
   return separateItemQuantityList;
 }
 
-clearCartNow(context) {
+void clearCartNow(context) {
   sharedPreferences!.setStringList("userCart", ['garbageValue']);
 
   List<String>? emptyList = sharedPreferences!.getStringList("userCart");

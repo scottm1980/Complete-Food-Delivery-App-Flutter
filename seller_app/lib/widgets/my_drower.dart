@@ -7,6 +7,8 @@ import 'package:seller_app/mainScreens/home_screen.dart';
 import 'package:seller_app/mainScreens/new_orders_screen.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -21,7 +23,7 @@ class MyDrawer extends StatelessWidget {
                   elevation: 10,
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
-                    child: Container(
+                    child: SizedBox(
                       height: 160,
                       width: 160,
                       child: CircleAvatar(

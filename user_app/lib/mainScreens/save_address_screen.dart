@@ -8,7 +8,14 @@ import 'package:user_app/models/address.dart';
 import 'package:user_app/widgets/simple_Appbar.dart';
 import 'package:user_app/widgets/text_field.dart';
 
-class SaveAddressScreen extends StatelessWidget {
+class SaveAddressScreen extends StatefulWidget {
+  const SaveAddressScreen({super.key});
+
+  @override
+  State<SaveAddressScreen> createState() => _SaveAddressScreenState();
+}
+
+class _SaveAddressScreenState extends State<SaveAddressScreen> {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _flatNumber = TextEditingController();
@@ -23,13 +30,17 @@ class SaveAddressScreen extends StatelessWidget {
   Position? position;
 
   String completeAddress = '';
-  getUserLocationAddress() async {
+
+  Future<void> getUserLocationAddress() async {
+    // ignore: unused_local_variable
     LocationPermission permission = await Geolocator.requestPermission();
     Position newPosition = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
 
-    position = newPosition;
+    setState(() {
+      position = newPosition;
+    });
 
     placemarks =
         await placemarkFromCoordinates(position!.latitude, position!.longitude);
@@ -42,15 +53,17 @@ class SaveAddressScreen extends StatelessWidget {
     String fullAddress =
         '${pMarks.subThoroughfare} ${pMarks.thoroughfare}, ${pMarks.subLocality} ${pMarks.locality}, ${pMarks.subAdministrativeArea}, ${pMarks.administrativeArea} ${pMarks.postalCode}, ${pMarks.country} ';
 
-    _locationController.text = fullAddress;
-    _flatNumber.text =
-        '${pMarks.subThoroughfare} ${pMarks.thoroughfare}, ${pMarks.subLocality} ${pMarks.locality}, ';
+    setState(() {
+      _locationController.text = fullAddress;
+      _flatNumber.text =
+          '${pMarks.subThoroughfare} ${pMarks.thoroughfare}, ${pMarks.subLocality} ${pMarks.locality}, ';
 
-    _city.text =
-        '${pMarks.subAdministrativeArea}, ${pMarks.administrativeArea} ,${pMarks.postalCode}';
-    _state.text = '${pMarks.country}';
+      _city.text =
+          '${pMarks.subAdministrativeArea}, ${pMarks.administrativeArea} ,${pMarks.postalCode}';
+      _state.text = '${pMarks.country}';
 
-    _completeAddress.text = fullAddress;
+      _completeAddress.text = fullAddress;
+    });
   }
 
   @override
@@ -70,8 +83,8 @@ class SaveAddressScreen extends StatelessWidget {
               phoneNumber: _phoneNumber.text.trim(),
               flatNumber: _flatNumber.text.trim(),
               city: _city.text.trim(),
-              lat: position!.latitude.toString(),
-              lng: position!.longitude.toString(),
+              lat: position?.latitude.toString() ?? '',
+              lng: position?.longitude.toString() ?? '',
               // locationController: _locationController.text.trim(),
             ).toJson();
 
@@ -115,14 +128,14 @@ class SaveAddressScreen extends StatelessWidget {
                 color: Colors.black,
                 size: 35,
               ),
-              title: Container(
+              title: SizedBox(
                 width: 250,
-                child: const TextField(
-                  style: TextStyle(
+                child: TextField(
+                  style: const TextStyle(
                     color: Colors.black,
                   ),
-                  // controller: _locationController,
-                  decoration: InputDecoration(
+                  controller: _locationController,
+                  decoration: const InputDecoration(
                       hintText: "What's your address",
                       hintStyle: TextStyle(color: Colors.black)),
                 ),
@@ -141,7 +154,7 @@ class SaveAddressScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: const BorderSide(color: Colors.cyan)))),

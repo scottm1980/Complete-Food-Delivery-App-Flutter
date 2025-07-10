@@ -14,7 +14,7 @@ import 'package:firebase_storage/firebase_storage.dart' as storageRef;
 
 class ItemsUploadScreen extends StatefulWidget {
   final Menus? model;
-  ItemsUploadScreen({this.model});
+  const ItemsUploadScreen({super.key, this.model});
 
   @override
   State<ItemsUploadScreen> createState() => _ItemsUploadScreenState();
@@ -82,8 +82,8 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStatePropertyAll(Colors.red.shade300),
-                  shape: MaterialStatePropertyAll(
+                      WidgetStatePropertyAll(Colors.red.shade300),
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -206,7 +206,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
       body: ListView(
         children: [
           uploading == true ? linearProgress() : Text(""),
-          Container(
+          SizedBox(
             height: 230,
             width: MediaQuery.of(context).size.width * 0.8,
             child: Center(
@@ -233,7 +233,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
               Icons.title,
               color: Colors.redAccent,
             ),
-            title: Container(
+            title: SizedBox(
               width: 250,
               child: TextField(
                 style: const TextStyle(color: Colors.black),
@@ -254,7 +254,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
               Icons.perm_device_information,
               color: Colors.redAccent,
             ),
-            title: Container(
+            title: SizedBox(
               width: 250,
               child: TextField(
                 style: const TextStyle(color: Colors.black),
@@ -275,7 +275,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
               Icons.description,
               color: Colors.redAccent,
             ),
-            title: Container(
+            title: SizedBox(
               width: 250,
               child: TextField(
                 style: const TextStyle(color: Colors.black),
@@ -296,7 +296,7 @@ class _ItemsUploadScreenState extends State<ItemsUploadScreen> {
               Icons.currency_rupee_sharp,
               color: Colors.redAccent,
             ),
-            title: Container(
+            title: SizedBox(
               width: 250,
               child: TextField(
                 keyboardType: TextInputType.number,

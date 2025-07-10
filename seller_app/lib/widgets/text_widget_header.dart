@@ -45,13 +45,13 @@ class TextWidgetHeader extends SliverPersistentHeaderDelegate {
   @override
   double get minExtent => 50;
 
-  @override
-  bool shouldRebild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      true;
+
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    // TODO: implement shouldRebuild
-    throw UnimplementedError();
+    if (oldDelegate is TextWidgetHeader) {
+      return oldDelegate.title != title;
+    }
+    return true;
   }
 }

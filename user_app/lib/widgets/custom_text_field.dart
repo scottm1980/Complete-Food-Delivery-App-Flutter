@@ -4,16 +4,17 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final IconData? data;
   final String? hintText;
-  bool? isObsecre = true;
-  bool? enabled = true;
+  final bool isObsecre;
+  final bool enabled;
 
-  CustomTextField(
-      {super.key,
-      this.controller,
-      this.data,
-      this.hintText,
-      this.isObsecre,
-      this.enabled});
+  const CustomTextField({
+    super.key,
+    this.controller,
+    this.data,
+    this.hintText,
+    this.isObsecre = true,
+    this.enabled = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         enabled: enabled,
         controller: controller,
-        obscureText: isObsecre!,
+        obscureText: isObsecre,
         cursorColor: Theme.of(context).primaryColor,
         decoration: InputDecoration(
             border: InputBorder.none,

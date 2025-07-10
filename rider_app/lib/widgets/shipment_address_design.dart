@@ -22,7 +22,7 @@ class ShipmentAddressDesign extends StatelessWidget {
       this.sellerId,
       this.orderByUser});
 
-  confirmPracelShipment(BuildContext context, String getOrderId,
+  void confirmPracelShipment(BuildContext context, String getOrderId,
       String sellerId, String purchaserId) {
     FirebaseFirestore.instance.collection('orders').doc(getOrderId).update({
       "riderUID": sharedPreferences!.getString("uid"),

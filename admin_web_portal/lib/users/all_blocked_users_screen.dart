@@ -1,7 +1,7 @@
 import 'package:admin_web_portal/mainScreens/home_screen.dart';
-import 'package:admin_web_portal/widgets/simple_Appbar.dart';
+import 'package:admin_web_portal/widgets/simple_appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 
 class AllBlockedUsersScreen extends StatefulWidget {
@@ -139,7 +139,7 @@ class _AllBlockedUsersScreenState extends State<AllBlockedUsersScreen> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(primary: Colors.green),
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                       icon: const Icon(
                         Icons.person_pin_sharp,
                         color: Colors.white,
@@ -175,9 +175,9 @@ class _AllBlockedUsersScreenState extends State<AllBlockedUsersScreen> {
     }
 
     return Scaffold(
-      appBar: SimpleAppBar(title: "All Blocked Users Account "),
+      appBar: const SimpleAppBar(title: "All Blocked Users Account "),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width * 5,
           child: displayBlockedUsersDesign(),
         ),

@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(
         children: [
           Center(
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width * .5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -142,14 +142,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       allowAdminToLogin();
                     },
                     style: ButtonStyle(
-                      padding: MaterialStateProperty.all(
+                      padding: WidgetStateProperty.all(
                         const EdgeInsets.symmetric(
                             horizontal: 100, vertical: 20),
                       ),
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.pink),
+                          WidgetStateProperty.all<Color>(Colors.pink),
                       foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.cyanAccent),
+                          WidgetStateProperty.all<Color>(Colors.cyanAccent),
                     ),
                     child: const Text(
                       "Login",

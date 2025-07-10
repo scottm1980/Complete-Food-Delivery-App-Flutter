@@ -13,7 +13,7 @@ class MySplashScreen extends StatefulWidget {
 }
 
 class _MySplashScreenState extends State<MySplashScreen> {
-  startTimer() {
+  void startTimer() {
     Timer(const Duration(seconds: 2), () async {
       if (firebaseAuth.currentUser != null) {
         Navigator.push(context,

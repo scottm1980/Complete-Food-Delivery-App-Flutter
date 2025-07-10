@@ -9,12 +9,11 @@ import 'package:seller_app/widgets/my_drower.dart';
 import 'package:seller_app/widgets/progress_bar.dart';
 
 import '../model/menus.dart';
-import '../widgets/info_design.dart';
 import '../widgets/text_widget_header.dart';
 
 class ItemsScreen extends StatefulWidget {
   final Menus? model;
-  const ItemsScreen({this.model});
+  const ItemsScreen({super.key, this.model});
 
   @override
   State<ItemsScreen> createState() => _ItemsScreenState();

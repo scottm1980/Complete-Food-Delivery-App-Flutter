@@ -81,8 +81,8 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
               ),
               ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: const MaterialStatePropertyAll(Colors.red),
-                  shape: MaterialStatePropertyAll(
+                  backgroundColor: const WidgetStatePropertyAll(Colors.red),
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -205,7 +205,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
       body: ListView(
         children: [
           uploading == true ? linearProgress() : Text(""),
-          Container(
+          SizedBox(
             height: 230,
             width: MediaQuery.of(context).size.width * 0.8,
             child: Center(
@@ -232,7 +232,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
               Icons.title,
               color: Colors.cyan,
             ),
-            title: Container(
+            title: SizedBox(
               width: 250,
               child: TextField(
                 style: const TextStyle(color: Colors.black),
@@ -253,7 +253,7 @@ class _MenusUploadScreenState extends State<MenusUploadScreen> {
               Icons.perm_device_information,
               color: Colors.cyan,
             ),
-            title: Container(
+            title: SizedBox(
               width: 250,
               child: TextField(
                 style: const TextStyle(color: Colors.black),

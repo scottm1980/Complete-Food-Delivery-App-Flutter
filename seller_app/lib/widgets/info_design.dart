@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:seller_app/global/global.dart';
@@ -7,10 +6,10 @@ import 'package:seller_app/mainScreens/itemsScreen.dart';
 import 'package:seller_app/model/menus.dart';
 
 class InfoDesignWidget extends StatefulWidget {
-  Menus? model;
-  BuildContext? context;
+  final Menus? model;
+  final BuildContext? context;
 
-  InfoDesignWidget({super.key, this.model, this.context});
+  const InfoDesignWidget({super.key, this.model, this.context});
 
   @override
   State<InfoDesignWidget> createState() => _InfoDesignWidgetState();
@@ -33,7 +32,7 @@ Fluttertoast.showToast(msg: "menu Deleted Successfully");
       splashColor: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(5),
-        child: Container(
+        child: SizedBox(
           height: 300,
           width: MediaQuery.of(context).size.width,
           child: Column(children: [

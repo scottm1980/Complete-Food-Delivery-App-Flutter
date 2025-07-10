@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:seller_app/global/global.dart';
 import 'package:seller_app/model/address.dart';
 
 import '../splashScreen/splash_screen.dart';

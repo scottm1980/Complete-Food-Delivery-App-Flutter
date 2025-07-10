@@ -6,15 +6,15 @@ import 'package:rider_app/mainScreens/parcel_delivering_screen.dart';
 import 'package:rider_app/maps/map_utils.dart';
 
 class ParcelPickingScreen extends StatefulWidget {
-  String? purchaserId;
-  String? sellerId;
+  final String? purchaserId;
+  final String? sellerId;
 
-  String? getOrderId;
-  String? purchaserAddress;
-  String? purchaserLat;
-  String? purchaserLng;
+  final String? getOrderId;
+  final String? purchaserAddress;
+  final String? purchaserLat;
+  final String? purchaserLng;
 
-  ParcelPickingScreen({
+  ParcelPickingScreen({super.key, 
     this.purchaserId,
     this.sellerId,
     this.getOrderId,
@@ -29,7 +29,7 @@ class ParcelPickingScreen extends StatefulWidget {
 
 class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
   double? sellerLat, sellerLng;
-  getSellerData() async {
+  Future<void> getSellerData() async {
     FirebaseFirestore.instance
         .collection("sellers")
         .doc(widget.sellerId)
@@ -46,7 +46,7 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
     getSellerData();
   }
 
-  confirmParcelHasBeenPicked(getOrederId, sellerId, purchaserId,
+  void confirmParcelHasBeenPicked(getOrederId, sellerId, purchaserId,
       purchaserAddress, purchaserLat, purchaserLng) {
     FirebaseFirestore.instance.collection("orders").doc(getOrederId).update({
       "status": "delivering",

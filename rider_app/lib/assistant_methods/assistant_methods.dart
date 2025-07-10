@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../global/global.dart';
 
 
-separateOrderItemIds(orderId) {
+List<String> separateOrderItemIds(orderId) {
   List<String> separateItemIdsList = [], defaultItemList = [];
   int i = 0;
   
@@ -20,7 +20,7 @@ separateOrderItemIds(orderId) {
   return separateItemIdsList;
 }
 
-separateItemIds() {
+List<String> separateItemIds() {
   List<String> separateItemIdsList = [], defaultItemList = [];
   int i = 0;
   defaultItemList = sharedPreferences!.getStringList("userCart")!;
@@ -38,7 +38,7 @@ separateItemIds() {
 
 
 
-separateOrderItemQuantities(orderId) {
+List<String> separateOrderItemQuantities(orderId) {
   List<String> separateItemQuantityList = [];
   List<String> defaultItemList = [];
 
@@ -57,7 +57,7 @@ separateOrderItemQuantities(orderId) {
   return separateItemQuantityList;
 }
 
-separateItemQuantities() {
+List<int> separateItemQuantities() {
   List<int> separateItemQuantityList = [];
   List<String> defaultItemList = [];
 
@@ -76,7 +76,7 @@ separateItemQuantities() {
   return separateItemQuantityList;
 }
 
-clearCartNow(context) {
+void clearCartNow(context) {
   sharedPreferences!.setStringList("userCart", ['garbageValue']);
 
   List<String>? emptyList = sharedPreferences!.getStringList("userCart");

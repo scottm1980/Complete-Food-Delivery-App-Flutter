@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rider_app/global/global.dart';
-import 'package:rider_app/main.dart';
 import 'package:rider_app/splashScreen/splash_screen.dart';
 
 class EarningScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class _EarningScreenState extends State<EarningScreen> {
         body: SafeArea(child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("₹"+previousRidersEarnings,style: const TextStyle(
+            Text("₹$previousRidersEarnings",style: const TextStyle(
               fontSize: 50,color: Colors.white,fontFamily: "Signatra"
             ),),
              const Text("Total Earnings",style: TextStyle(

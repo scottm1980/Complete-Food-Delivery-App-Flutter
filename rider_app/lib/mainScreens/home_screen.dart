@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
     getRiderPreviousEarnings();
   }
 
-  getRiderPreviousEarnings() {
+  void getRiderPreviousEarnings() {
     FirebaseFirestore.instance
         .collection("riders")
         .doc(sharedPreferences!.getString("uid"))
@@ -129,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  getPerParcelDeliveryAmount() {
+  void getPerParcelDeliveryAmount() {
     FirebaseFirestore.instance
         .collection("perDelivery")
         .doc("alizeb438")

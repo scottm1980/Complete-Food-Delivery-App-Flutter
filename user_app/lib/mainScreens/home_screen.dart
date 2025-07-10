@@ -88,11 +88,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Home(),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Container(
+                  child: SizedBox(
                     height: MediaQuery.of(context).size.height * .3,
                     width: MediaQuery.of(context).size.width,
                     child: CarouselSlider(
-                      items: items.map((Index) {
+                      items: items.map((imagePath) {
                         return Builder(builder: (BuildContext context) {
                           return Container(
                             width: MediaQuery.of(context).size.width,
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: Image.asset(
-                                  Index,
+                                  imagePath,
                                   fit: BoxFit.fill,
                                 )),
                           );
@@ -141,21 +141,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: circularProgress(),
                         ),
                       )
-                    : SliverStaggeredGrid.countBuilder(
-                        crossAxisCount: 1,
-                        staggeredTileBuilder: (context) =>
-                            const StaggeredTile.fit(1),
-                        itemBuilder: (context, index) {
-                          Sellers sModel = Sellers.fromJson(
-                              snapshot.data!.docs[index].data()
-                                  as Map<String, dynamic>);
-
-                          return SellersDesignWidget(
-                            model: sModel,
-                            context: context,
-                          );
-                        },
-                        itemCount: snapshot.data!.docs.length,
+                    : SliverToBoxAdapter(
+                        child: MasonryGridView.count(
+                          crossAxisCount: 1,
+                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) {
+                            Sellers sModel = Sellers.fromJson(
+                                snapshot.data!.docs[index].data()
+                                    as Map<String, dynamic>);
+                            return SellersDesignWidget(
+                              model: sModel,
+                              context: context,
+                            );
+                          },
+                        ),
                       );
               }),
         ],

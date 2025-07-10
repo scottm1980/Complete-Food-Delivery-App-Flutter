@@ -7,15 +7,15 @@ import 'package:rider_app/splashScreen/splash_screen.dart';
 import '../global/global.dart';
 
 class ParcelDeliveringScreen extends StatefulWidget {
-  String? purchaserId;
-  String? purchaserAddress;
-  String? purchaserLat;
-  String? purchaserLng;
+  final String? purchaserId;
+  final String? purchaserAddress;
+  final String? purchaserLat;
+  final String? purchaserLng;
 
-  String? sellerId;
-  String? getOrderId;
+  final String? sellerId;
+  final String? getOrderId;
 
-  ParcelDeliveringScreen({
+  ParcelDeliveringScreen({super.key, 
     this.purchaserId,
     this.purchaserAddress,
     this.purchaserLat,
@@ -31,7 +31,7 @@ class ParcelDeliveringScreen extends StatefulWidget {
 class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
   String orderTotalAmount = "";
 
-  confirmParcelHasBeenDelivered(getOrederId, sellerId, purchaserId,
+  void confirmParcelHasBeenDelivered(getOrederId, sellerId, purchaserId,
       purchaserAddress, purchaserLat, purchaserLng) {
     String riderNewTotolEarningAmount =
         (double.tryParse(previousRidersEarnings + perParcelDeliveryAmount))
@@ -74,23 +74,22 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
         context, MaterialPageRoute(builder: (c) => const MySplashScreen()));
   }
 
-  getOrderTotalAmount() {
+  void getOrderTotalAmount() {
     FirebaseFirestore.instance
         .collection("orders")
         .doc(widget.getOrderId)
         .get()
         .then((snap) {
       orderTotalAmount = snap.data()!["totolAmmount"].toString();
-      widget.sellerId = snap.data()!["sellerUID"].toString();
-    }).then((value) {
-      getSellerData();
+      // Instead of setting widget.sellerId (which is final), fetch sellerId and pass to getSellerData
+      getSellerData(snap.data()!["sellerUID"].toString());
     });
   }
 
-  getSellerData() {
+  void getSellerData(String sellerId) {
     FirebaseFirestore.instance
         .collection("sellers")
-        .doc(widget.sellerId)
+        .doc(sellerId)
         .get()
         .then((snap) {
       previousEarnings = snap.data()!["earnings"].toString();

@@ -11,7 +11,7 @@ import 'package:seller_app/widgets/status_banner.dart';
 class OrderDetailsScreen extends StatefulWidget {
   final String? orderId;
 
-  const OrderDetailsScreen({this.orderId});
+  const OrderDetailsScreen({super.key, this.orderId});
 
   @override
   State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();

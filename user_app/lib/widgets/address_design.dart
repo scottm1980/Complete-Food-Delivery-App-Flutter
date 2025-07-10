@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_app/assistant_methods/address_changer.dart';
-import 'package:user_app/assistant_methods/total_ammount.dart';
 import 'package:user_app/mainScreens/placed_order_screen.dart';
 
 import 'package:user_app/models/address.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:user_app/models/sellers.dart';
 
 import '../maps/maps.dart';
 

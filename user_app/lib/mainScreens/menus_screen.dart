@@ -4,7 +4,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:user_app/assistant_methods/assistant_methods.dart';
 import 'package:user_app/models/menus.dart';
 import 'package:user_app/widgets/menus_design.dart';
-import 'package:user_app/widgets/my_drower.dart';
 import 'package:user_app/widgets/progress_bar.dart';
 import 'package:user_app/widgets/text_widget_header.dart';
 
@@ -72,21 +71,26 @@ class _MenusScreenState extends State<MenusScreen> {
                         child: circularProgress(),
                       ),
                     )
-                  : SliverStaggeredGrid.countBuilder(
-                      crossAxisCount: 1,
-                      staggeredTileBuilder: (context) =>
-                          const StaggeredTile.fit(1),
-                      itemBuilder: (context, index) {
-                        Menus model = Menus.fromJson(
-                          snapshot.data!.docs[index].data()!
-                              as Map<String, dynamic>,
-                        );
-                        return MenusDesignWidget(
-                          model: model,
-                          context: context,
-                        );
-                      },
-                      itemCount: snapshot.data!.docs.length);
+                  : SliverToBoxAdapter(
+                      child: MasonryGridView.count(
+                        crossAxisCount: 1,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 8,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          Menus model = Menus.fromJson(
+                            snapshot.data!.docs[index].data()!
+                                as Map<String, dynamic>,
+                          );
+                          return MenusDesignWidget(
+                            model: model,
+                            context: context,
+                          );
+                        },
+                      ),
+                    );
             },
           ),
         ],

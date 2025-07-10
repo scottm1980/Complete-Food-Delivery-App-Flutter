@@ -44,21 +44,26 @@ class _ItemsScreenState extends State<ItemsScreen> {
                         child: circularProgress(),
                       ),
                     )
-                  : SliverStaggeredGrid.countBuilder(
-                      crossAxisCount: 1,
-                      staggeredTileBuilder: (context) =>
-                          const StaggeredTile.fit(1),
-                      itemBuilder: (context, index) {
-                        Items model = Items.fromJson(
-                          snapshot.data!.docs[index].data()!
-                              as Map<String, dynamic>,
-                        );
-                        return ItemsDesignWidget(
-                          model: model,
-                          context: context,
-                        );
-                      },
-                      itemCount: snapshot.data!.docs.length);
+                  : SliverToBoxAdapter(
+                      child: MasonryGridView.count(
+                        crossAxisCount: 1,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 8,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) {
+                          Items model = Items.fromJson(
+                            snapshot.data!.docs[index].data()!
+                                as Map<String, dynamic>,
+                          );
+                          return ItemsDesignWidget(
+                            model: model,
+                            context: context,
+                          );
+                        },
+                      ),
+                    );
             },
           ),
         ],
